@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HeadComponent } from './head/head.component';
 import { LoginComponent } from './login/login.component';
+import {DesktopComponent} from './desktop/desktop.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { LoginComponent } from './login/login.component';
     RegisterComponent,
     HeadComponent,
     LoginComponent,
+    DesktopComponent,
   ],
   imports: [
     BrowserModule,
