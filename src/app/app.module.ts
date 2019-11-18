@@ -8,6 +8,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HeadComponent } from './head/head.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import {httpInterceptorProviders} from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,7 @@ import { LoginComponent } from './login/login.component';
     RegisterComponent,
     HeadComponent,
     LoginComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,7 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
