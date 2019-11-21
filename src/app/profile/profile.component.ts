@@ -4,6 +4,8 @@ import {TokenStorageService} from '../auth/token-storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {IProfile} from '../i-profile';
 import {ProfileService} from '../service/profile.service';
+import {FileUpload} from '../FileUpload';
+import {UploadFileService} from '../service/upload-file.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +13,9 @@ import {ProfileService} from '../service/profile.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
+  selectedFiles: FileList;
+  currentFileUpload: FileUpload;
+  percentage: number;
   acc: IProfile;
   data: FormGroup;
   token: string;
@@ -20,7 +24,8 @@ export class ProfileComponent implements OnInit {
               private fb: FormBuilder,
               private router: Router,
               private profileService: ProfileService,
-              private tokenStorage: TokenStorageService) { }
+              private tokenStorage: TokenStorageService,
+              private uploadService: UploadFileService) { }
 
   ngOnInit() {
     this.data = this.fb.group({
@@ -48,6 +53,25 @@ export class ProfileComponent implements OnInit {
     });
   }
   logout() { this.tokenStorage.signOut(); this.message = 'Bạn đã đăng xuất';
+  }
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload() {
+    const file = this.selectedFiles.item(0);
+    this.selectedFiles = undefined;
+
+    this.currentFileUpload = new FileUpload(file);
+    console.log(this.currentFileUpload);
+    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+      percentage => {
+        this.percentage = Math.round(percentage);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

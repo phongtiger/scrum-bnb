@@ -13,6 +13,20 @@
   <a routerLink="/create-home">Create home </a>
 </div>
     <div class="col-md-4" >
+      <div *ngIf="currentFileUpload" class="progress">
+        <div class="progress-bar progress-bar-info progress-bar-striped"
+             role="progressbar" attr.aria-valuenow="{{percentage}}"
+             aria-valuemin="0" aria-valuemax="100"
+             [ngStyle]="{width:percentage+'%'}">
+          {{percentage}}%</div>
+      </div>
+
+      <label class="btn btn-default"> <input type="file"
+                                             (change)="selectFile($event)">
+      </label>
+
+      <button class="btn btn-success" [disabled]="!selectedFiles"
+              (click)="upload()">Upload</button>
       <form [formGroup]="data" (ngSubmit)="editMember()" class="col-md-12 offset-md-8">
         <input type="hidden" formControlName="token">
         <div class="form-group row">
