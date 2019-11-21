@@ -1,0 +1,99 @@
+<div class="container register">
+  <h2 class="text-center">Sign in</h2>
+
+
+  <div class="row">
+
+    <div class="col-md-4"><a routerLink="/addprofile">Add Profile</a>
+      <div><br/></div>
+      <a routerLink="/editPassword">Change Password</a></div></div>
+
+
+    <div class="col-md-4">
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="col-md-6 offset-md-3">
+          <div class="form-group row">
+            <label class="col">
+              Tên căn nhà :
+              <input type="text" class="form-control" formControlName="name">
+            </label>
+            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('name').invalid && formGroup.get('name').touched">
+              Invalid tên căn nhà.
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col">
+              Room
+              <input type="text" class="form-control" formControlName="room">
+            </label>
+            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('room').invalid && formGroup.get('room').touched">
+              Invalid Room!
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col">
+              Address:
+              <input type="text" class="form-control" formControlName="address" >
+            </label>
+            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('address').invalid && formGroup.get('address').touched">
+              Invalid address!
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col">
+              Phòng ngủ :
+              <input type="text" class="form-control" formControlName="bedroom" >
+            </label>
+            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('bedroom').invalid && formGroup.get('bedroom').touched">
+              Phòng ngủ !
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col">
+              Phòng tắm :
+              <input type="text" class="form-control" formControlName="bathroom" >
+            </label>
+            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('bathroom').invalid && formGroup.get('bathroom').touched">
+              Invalid phong tắm !
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col">
+              Mô tả :
+              <input type="text" class="form-control" formControlName="description" >
+            </label>
+            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('description').invalid && formGroup.get('description').touched">
+              Invalid mô tả !
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col">
+              Giá một đêm :
+              <input type="text" class="form-control" formControlName="priceByNight" >
+            </label>
+            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('priceByNight').invalid && formGroup.get('priceByNight').touched">
+              Invalid giá !
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col">
+              Loại căn hộ
+              <select  formControlName="category" class="form-control">
+                <option [defaultSelected]="1" value="Home stay"> Home stay</option>
+                <option value="Nhà nghỉ">Nhà nghỉ </option>
+                <option value="Nhà trọ">Nhà trọ </option>
+              </select>
+            </label>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-info" type="submit">Submit</button>
+          </div>
+        </form>
+    </div>
+  </div>
+
+  <div class="col-md-4"></div>
+
+<pre>
+{{ formGroup.value | json}}
+</pre>
+
