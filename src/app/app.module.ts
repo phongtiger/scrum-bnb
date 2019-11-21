@@ -11,6 +11,12 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import {httpInterceptorProviders} from './auth/auth-interceptor';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { CreateHomeComponent } from './create-home/create-home.component';
+import { UploadfileComponent } from './uploadfile/uploadfile.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +26,17 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     LoginComponent,
     ProfileComponent,
     ChangePasswordComponent,
+    CreateHomeComponent,
+    UploadfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule, // for database
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

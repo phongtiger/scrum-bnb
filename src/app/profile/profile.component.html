@@ -9,6 +9,9 @@
       <div><br/></div>
       <a routerLink="/editPassword">Change Password</a>
     </div>
+    <br/></div>
+  <a routerLink="/create-home">Create home </a>
+</div>
     <div class="col-md-4" >
       <form [formGroup]="data" (ngSubmit)="editMember()" class="col-md-12 offset-md-8">
         <input type="hidden" formControlName="token">
@@ -45,10 +48,8 @@
       <button class="btn btn-info" (click)="logout()">Logout</button>
     </div>
     <div class="col-md-4" ></div>
-  </div>
   <pre>
 {{ data.value | json}}
 </pre>
-</div>
 
 

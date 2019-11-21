@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from './auth/token-storage.service';
+import {AngularFireDatabase} from '@angular/fire/database';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +10,13 @@ import {TokenStorageService} from './auth/token-storage.service';
 })
 export class AppComponent implements OnInit {private roles: string[];
   private authority: string;
-
-  constructor(private tokenStorage: TokenStorageService) { }
+  title = 'Angular8Firebase';
+  description = 'Angular-Fire-Demo';
+  itemValue = '';
+  items: Observable<any[]>;
+  constructor(private tokenStorage: TokenStorageService,
+              public db: AngularFireDatabase
+              ) {this.items = db.list('items').valueChanges(); }
 
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
@@ -26,5 +33,9 @@ export class AppComponent implements OnInit {private roles: string[];
         return true;
       });
     }
+  }
+  onSubmit() {
+    this.db.list('items').push({ content: this.itemValue});
+    this.itemValue = '';
   }
 }
