@@ -21,7 +21,6 @@ export class TokenStorageService {
     window.sessionStorage.setItem(TOKEN_KEY, token);
     window.localStorage.removeItem(TOKEN_KEY);
     window.localStorage.setItem(TOKEN_KEY, token);
-    document.cookie = TOKEN_KEY + '=' + token;
   }
 
   public getToken(): string {

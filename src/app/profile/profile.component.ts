@@ -48,7 +48,9 @@ export class ProfileComponent implements OnInit {
     );
   }
   editMember() {
+    this.data.patchValue({ avatar: this.uploadService.image});
     this.profileService.updateAcc(this.data.value).subscribe(next => {
+      console.log(this.data.value);
       this.message = 'Update success';
     });
   }
@@ -64,6 +66,7 @@ export class ProfileComponent implements OnInit {
 
     this.currentFileUpload = new FileUpload(file);
     console.log(this.currentFileUpload);
+    // this.data.setValue({ avatar: this.currentFileUpload.url});
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
       percentage => {
         this.percentage = Math.round(percentage);
