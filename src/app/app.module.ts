@@ -15,7 +15,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/storage';
-
+import { HostComponent } from './host/host.component';
+import { RoleComponent } from './role/role.component';
+import { ListHomeComponent } from './host/list-home/list-home.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,10 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
     ProfileComponent,
     ChangePasswordComponent,
     CreateHomeComponent,
+    HostComponent,
+    RoleComponent,
+    ListHomeComponent,
+    UserComponent,
      ],
   imports: [
     BrowserModule,

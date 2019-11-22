@@ -7,4 +7,5 @@ export interface IHome {
   bathroom: number;
   description: string;
   priceBynight: number;
+  image: null;
 }

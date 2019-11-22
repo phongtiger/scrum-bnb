@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HomeService} from '../service/home.service';
+import {FileUpload} from '../FileUpload';
+import {UploadFileService} from '../service/upload-file.service';
 
 @Component({
   selector: 'app-create-home',
@@ -8,12 +10,16 @@ import {HomeService} from '../service/home.service';
   styleUrls: ['./create-home.component.scss']
 })
 export class CreateHomeComponent implements OnInit {
+  selectedFiles: FileList;
+  currentFileUpload: FileUpload;
+  percentage: number;
   formGroup: FormGroup;
   message: string;
   isCreatFailed = false;
 
   constructor(private homeService: HomeService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private uploadService: UploadFileService) {
   }
 
   ngOnInit() {
@@ -26,13 +32,14 @@ export class CreateHomeComponent implements OnInit {
       description: ['', [Validators.required]],
       priceByNight: ['', [Validators.required, Validators.min(0)]],
       category: ['', [Validators.required]],
+      image: null
     });
   }
 
   onSubmit() {
     if (this.formGroup.valid) {
+      this.formGroup.patchValue( {image: this.uploadService.image});
       const {value} = this.formGroup;
-      console.log(value.role);
       console.log(value);
       this.homeService.createHome(value)
         .subscribe(next => {
@@ -53,6 +60,26 @@ export class CreateHomeComponent implements OnInit {
           this.isCreatFailed = true;
         });
     }
+  }
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload() {
+    const file = this.selectedFiles.item(0);
+    this.selectedFiles = undefined;
+
+    this.currentFileUpload = new FileUpload(file);
+    console.log(this.currentFileUpload);
+    // this.data.setValue({ avatar: this.currentFileUpload.url});
+    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+      percentage => {
+        this.percentage = Math.round(percentage);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

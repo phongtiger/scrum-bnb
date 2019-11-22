@@ -7,8 +7,20 @@
     <div class="col-md-4"><a routerLink="/addprofile">Add Profile</a>
       <div><br/></div>
       <a routerLink="/editPassword">Change Password</a></div></div>
+<br/>
+  <div *ngIf="currentFileUpload" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped"
+         role="progressbar" attr.aria-valuenow="{{percentage}}"
+         aria-valuemin="0" aria-valuemax="100"
+         [ngStyle]="{width:percentage+'%'}">
+      {{percentage}}%</div>
+  </div>
+  <label class="btn btn-default"> <input type="file"
+                                         (change)="selectFile($event)">
+  </label>
 
-
+  <button class="btn btn-success" [disabled]="!selectedFiles"
+          (click)="upload()">Upload</button>
     <div class="col-md-4">
         <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="col-md-6 offset-md-3">
           <div class="form-group row">
