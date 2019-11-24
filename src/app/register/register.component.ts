@@ -18,7 +18,8 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   message: string;
-  isSignUpFailed = false;
+  isSignUp = true;
+  message2 = false;
   constructor(private accService: AccountService,
               private fb: FormBuilder) {
   }
@@ -50,14 +51,24 @@ export class RegisterComponent implements OnInit {
       this.accService.createAcc(value)
         .subscribe(next => {
           console.log(next);
-          this.isSignUpFailed = false;
+          this.isSignUp = true;
+          this.message2 = true;
+          // this.message = ' ';
           this.registerForm.reset({
             email: '',
             password: '',
           });
         }, error => {
+          // if ((this.isSignUp === false) && (this.message2 === false)) {
+          //   this.message = 'Tạo không thành công';
+          // }
+          // if ((this.isSignUp === true) && (this.message2 === false)) {
+          //   this.message = 'abcdef';
+          // }
+          // this.message2 = true;
           this.message = 'Tạo không thành công';
-          this.isSignUpFailed = true; });
+          // this.isSignUp = false;
+        });
     }
   }
 

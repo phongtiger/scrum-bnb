@@ -14,7 +14,7 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <div *ngIf="isSignUpFailed; else signupForm">
+              <div *ngIf="isSignUp && message2; else signupForm">
                 Your registration is successful. Please login!
               </div>
               <ng-template #signupForm>
@@ -78,11 +78,12 @@
                     </div>
                   </div>
                 </form>
+                <div *ngIf="isSignUp && !message2">
+                  <p> </p>
+                </div>
+                <div><p>{{message}}</p></div>
               </ng-template>
             </div>
-<!--            <div *ngIf="!isSignUpFailed" class="invalid-feedback">-->
-<!--              Chưa đăng ký thành công-->
-<!--            </div>-->
           </div>
         </div>
       </div>
