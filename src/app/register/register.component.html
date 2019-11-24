@@ -6,11 +6,7 @@
       <div><br/></div>
       <a routerLink="/editPassword">Change Password</a></div>
     <div class="col-md-4">
-      <div *ngIf="isSignUpFailed; else signupForm">
-        Your registration is successful. Please login!
-      </div>
 
-      <ng-template #signupForm>
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="col-md-6 offset-md-3">
           <div class="form-group row">
             <label class="col">
@@ -58,10 +54,7 @@
             <button class="btn btn-info" type="submit">Submit</button>
           </div>
         </form>
-      </ng-template>
-    </div>
-    <div *ngIf="!isSignUpFailed" class="alert alert-warning">
-      Chưa đăng ký thành công
+      <div><p>{{message}}</p></div>
     </div>
   </div>
   <div class="col-md-4"></div>

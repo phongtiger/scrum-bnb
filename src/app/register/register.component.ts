@@ -15,10 +15,8 @@ function comparePassword(c: AbstractControl) {
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
   registerForm: FormGroup;
   message: string;
-  isSignUpFailed = false;
   constructor(private accService: AccountService,
               private fb: FormBuilder) {
   }
@@ -50,14 +48,12 @@ export class RegisterComponent implements OnInit {
       this.accService.createAcc(value)
         .subscribe(next => {
           console.log(next);
-          this.isSignUpFailed = false;
+          this.message = 'Tạo thanh cong';
           this.registerForm.reset({
             email: '',
             password: '',
           });
-        }, error => {
-          this.message = 'Tạo không thành công';
-          this.isSignUpFailed = true; });
+        }, error => this.message = 'Tạo không thành công' ) ;
     }
   }
 

@@ -1,1 +1,20 @@
 <p>Đây là danh sách nhà của host </p>
+<div class="container">
+  <div class="media">
+    <div *ngFor="let item of output; index as i">
+      <div class="media-left media-middle">
+        <a [routerLink]="['/host/info/home',item.id]"><img class="media-object" src="{{item.image}}"></a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{item.name}}</h4>
+        <p>{{item.description}}</p>
+        <p>{{item.address}}</p>
+        <p>{{item.room}}</p>
+        <p>{{item.bathroom}}</p>
+        <p>{{item.bedroom}}</p>
+        <p>{{item.category}}</p>
+        <p>{{item.priceBynight}}</p>
+      </div>
+    </div>
+  </div>
+</div>

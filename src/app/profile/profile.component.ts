@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
       name: '',
       phone: '',
       address: '',
-      avatar: ''
+      avatar: null
     })
     ;
     this.token = this.tokenStorage.getToken();

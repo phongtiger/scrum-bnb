@@ -1,4 +1,5 @@
 export interface IHome {
+  id: string;
   name: string;
   category: string;
   room: string;

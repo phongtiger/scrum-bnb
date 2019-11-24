@@ -8,6 +8,7 @@ import {CreateHomeComponent} from './create-home/create-home.component';
 import {RoleComponent} from './role/role.component';
 import {HostComponent} from './host/host.component';
 import {ListHomeComponent} from './host/list-home/list-home.component';
+import {InforHomeHostComponent} from './host/infor-home-host/infor-home-host.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
       path: 'list-home',
         component: ListHomeComponent
+      },
+      {
+        path: ':id',
+        component: InforHomeHostComponent
       }
     ]
   }

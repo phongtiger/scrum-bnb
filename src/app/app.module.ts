@@ -19,6 +19,7 @@ import { HostComponent } from './host/host.component';
 import { RoleComponent } from './role/role.component';
 import { ListHomeComponent } from './host/list-home/list-home.component';
 import { UserComponent } from './user/user.component';
+import { InforHomeHostComponent } from './host/infor-home-host/infor-home-host.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { UserComponent } from './user/user.component';
     RoleComponent,
     ListHomeComponent,
     UserComponent,
+    InforHomeHostComponent,
      ],
   imports: [
     BrowserModule,
