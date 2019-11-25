@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {IHome} from '../../i-home';
 import {HostService} from '../../service/host.service';
 import {error} from 'util';
+import {ProfileService} from '../../service/profile.service';
+import {HomeHost} from '../../home-host';
 
 @Component({
   selector: 'app-list-home',
@@ -9,15 +11,21 @@ import {error} from 'util';
   styleUrls: ['./list-home.component.scss']
 })
 export class ListHomeComponent implements OnInit {
-  output: IHome[];
-  info: IHome;
+  output: HomeHost[];
+  info: HomeHost;
   message: string;
-  constructor(private hostService: HostService) {
-    this.hostService.getAllHomeOfHost().subscribe(next => {
-      this.output = next;
-    }, error1 => this.message = 'khong thanh cong');
-  }
+  idHost: number;
+  constructor(private hostService: HostService, private profileService: ProfileService
+  ) {}
   ngOnInit() {
+    this.profileService.getOneAccToken().subscribe(
+      next => {
+        this.idHost = next.id;
+        console.log( this.idHost);
+        this.hostService.getAllHomeOfHost(next.id).subscribe(next2 => {
+          this.output = next2;
+        }, error1 => this.message = 'khong thanh cong');
+      });
   }
 
 }

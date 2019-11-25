@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HomeService} from '../service/home.service';
 import {FileUpload} from '../FileUpload';
 import {UploadFileService} from '../service/upload-file.service';
+import {HomeImageService} from '../service/home-image.service';
 
 @Component({
   selector: 'app-create-home',
@@ -19,42 +20,31 @@ export class CreateHomeComponent implements OnInit {
 
   constructor(private homeService: HomeService,
               private fb: FormBuilder,
-              private uploadService: UploadFileService) {
+              private uploadService: HomeImageService) {
   }
 
   ngOnInit() {
     this.formGroup = this.fb.group({
-      name: ['', [Validators.required]],
-      room: ['', [Validators.required]],
+      houseName: ['', [Validators.required]],
       address: ['', [Validators.required]],
-      bedroom: ['', [Validators.required, Validators.min(0)]],
-      bathroom: ['', [Validators.required, Validators.min(0)]],
-      description: ['', [Validators.required]],
-      priceByNight: ['', [Validators.required, Validators.min(0)]],
+      bedroomNumber: ['', [Validators.required, Validators.min(0)]],
+      bathroomNumber: ['', [Validators.required, Validators.min(0)]],
+      area: ['', [Validators.required]],
+      price: ['', [Validators.required, Validators.min(0)]],
       category: ['', [Validators.required]],
-      image: null
+      imageUrls: null
     });
   }
 
   onSubmit() {
     if (this.formGroup.valid) {
-      this.formGroup.patchValue( {image: this.uploadService.image});
+      this.formGroup.patchValue( {imageUrls: this.uploadService.image});
       const {value} = this.formGroup;
-      console.log(value);
       this.homeService.createHome(value)
         .subscribe(next => {
           console.log(next);
           this.isCreatFailed = false;
-          this.formGroup.reset({
-            name: '',
-            room: '',
-            address: '',
-            bedroom: '',
-            bathroom: '',
-            description: '',
-            priceByNight: '',
-            category: '',
-          });
+          console.log('Thanh cong');
         }, error => {
           this.message = 'Tạo không thành công';
           this.isCreatFailed = true;

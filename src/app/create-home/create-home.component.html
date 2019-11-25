@@ -26,19 +26,10 @@
           <div class="form-group row">
             <label class="col">
               Tên căn nhà :
-              <input type="text" class="form-control" formControlName="name">
+              <input type="text" class="form-control" formControlName="houseName">
             </label>
-            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('name').invalid && formGroup.get('name').touched">
+            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('houseName').invalid && formGroup.get('houseName').touched">
               Invalid tên căn nhà.
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col">
-              Room
-              <input type="text" class="form-control" formControlName="room">
-            </label>
-            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('room').invalid && formGroup.get('room').touched">
-              Invalid Room!
             </div>
           </div>
           <div class="form-group row">
@@ -53,36 +44,36 @@
           <div class="form-group row">
             <label class="col">
               Phòng ngủ :
-              <input type="text" class="form-control" formControlName="bedroom" >
+              <input type="text" class="form-control" formControlName="bedroomNumber" >
             </label>
-            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('bedroom').invalid && formGroup.get('bedroom').touched">
+            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('bedroomNumber').invalid && formGroup.get('bedroomNumber').touched">
               Phòng ngủ !
             </div>
           </div>
           <div class="form-group row">
             <label class="col">
               Phòng tắm :
-              <input type="text" class="form-control" formControlName="bathroom" >
+              <input type="text" class="form-control" formControlName="bathroomNumber" >
             </label>
-            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('bathroom').invalid && formGroup.get('bathroom').touched">
+            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('bathroomNumber').invalid && formGroup.get('bathroomNumber').touched">
               Invalid phong tắm !
             </div>
           </div>
           <div class="form-group row">
             <label class="col">
-              Mô tả :
-              <input type="text" class="form-control" formControlName="description" >
+              Khu vuc :
+              <input type="text" class="form-control" formControlName="area" >
             </label>
-            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('description').invalid && formGroup.get('description').touched">
-              Invalid mô tả !
+            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('area').invalid && formGroup.get('area').touched">
+              Invalid khu vuc !
             </div>
           </div>
           <div class="form-group row">
             <label class="col">
               Giá một đêm :
-              <input type="text" class="form-control" formControlName="priceByNight" >
+              <input type="text" class="form-control" formControlName="price" >
             </label>
-            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('priceByNight').invalid && formGroup.get('priceByNight').touched">
+            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('price').invalid && formGroup.get('price').touched">
               Invalid giá !
             </div>
           </div>
@@ -90,9 +81,10 @@
             <label class="col">
               Loại căn hộ
               <select  formControlName="category" class="form-control">
-                <option [defaultSelected]="1" value="Home stay"> Home stay</option>
-                <option value="Nhà nghỉ">Nhà nghỉ </option>
-                <option value="Nhà trọ">Nhà trọ </option>
+                <option [defaultSelected]="1" value="Hotel"> Hotel</option>
+                <option value="House"> House </option>
+                <option value="Resort"> Resort </option>
+                <option value="Villa"> Villa </option>
               </select>
             </label>
           </div>

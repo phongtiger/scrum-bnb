@@ -27,9 +27,6 @@ export class RegisterComponent implements OnInit {
       confirmPassword: '',
       role: '',
     }, {validator: comparePassword});
-    this.registerForm.patchValue({
-      email: 'info@example.com'
-    });
   }
 
   onSubmit() {
@@ -37,11 +34,11 @@ export class RegisterComponent implements OnInit {
       const {value} = this.registerForm;
       console.log(value.role);
       switch (value.role) {
-        case '2':
+        case '1':
           value.role = ['user'];
           break;
-        case '3':
-          value.role = ['pm'];
+        case '2':
+          value.role = ['host'];
           break;
       }
       console.log(value);

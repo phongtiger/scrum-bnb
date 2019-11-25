@@ -16,7 +16,7 @@ export class InforHomeHostComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.hostService.getHostHomebyId(id).subscribe(
+    this.hostService.getHomebyId(id).subscribe(
       next => (
         this.infor = next
       ), error3 => { this.message = 'không tồn tại'; }

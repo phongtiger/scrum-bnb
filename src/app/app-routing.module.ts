@@ -9,6 +9,7 @@ import {RoleComponent} from './role/role.component';
 import {HostComponent} from './host/host.component';
 import {ListHomeComponent} from './host/list-home/list-home.component';
 import {InforHomeHostComponent} from './host/infor-home-host/infor-home-host.component';
+import {ListHomeUserComponent} from './user/list-home-user/list-home-user.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'role',
     component: RoleComponent
+  },
+  {
+    path: 'user',
+    component: ListHomeUserComponent
   },
   {
     path: 'host',

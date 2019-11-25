@@ -9,7 +9,7 @@ import {finalize} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HomeImageService {
-  public image: [string];
+  public image: string;
   private basePath = '/uploads';
 
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
@@ -23,7 +23,7 @@ export class HomeImageService {
       finalize(() => {
         storageRef.getDownloadURL().subscribe(downloadURL => {
           console.log('File available at', downloadURL);
-          this.image.push(downloadURL);
+          this.image = downloadURL;
           fileUpload.url = downloadURL;
           fileUpload.name = fileUpload.file.name;
           this.saveFileData(fileUpload);

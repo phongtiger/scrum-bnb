@@ -1,16 +1,15 @@
+
 <a routerLink="/addprofile">Add Profile</a>
 <br/>
 <a routerLink="/editPassword">Change Password</a>
 <br/>
-<br/>
-<a routerLink="/create-home">Create home</a>
-<br/>
-<p>Đây là danh sách nhà của host </p>
+
+<p>Đây là danh sách nhà </p>
 <div class="container">
   <div class="media">
     <div *ngFor="let item of output; index as i">
       <div class="media-left media-middle">
-        <a [routerLink]="['/host/info/home',item.id]"><img class="media-object" src="{{item.imageUrls}}"></a>
+        <a [routerLink]="['/user/info/home',item.id]"><img class="media-object" src="{{item.imageUrls}}"></a>
       </div>
       <div class="media-body">
         <h4 class="media-heading">{{item.houseName}}</h4>
