@@ -19,7 +19,7 @@ export class HostService {
     return this.http.get<HomeHost[]>(`${this.API_URL}/api/guest/host/${idHost}`);
   }
 
-  getHomebyId(id: number): Observable<IHome> {
-    return this.http.get<IHome>(`${this.API_URL}/api/guest/${id}`);
+  getHomebyId(id: number): Observable<HomeHost> {
+    return this.http.get<HomeHost>(`${this.API_URL}/api/guest/${id}`);
   }
 }

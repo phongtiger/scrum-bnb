@@ -61,11 +61,11 @@
           </div>
           <div class="form-group row">
             <label class="col">
-              Khu vuc :
-              <input type="text" class="form-control" formControlName="area" >
+              Diện tích :
+              <input type="number" class="form-control" formControlName="area" >
             </label>
             <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('area').invalid && formGroup.get('area').touched">
-              Invalid khu vuc !
+              Invalid diện tích !
             </div>
           </div>
           <div class="form-group row">

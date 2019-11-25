@@ -9,7 +9,10 @@ import {RoleComponent} from './role/role.component';
 import {HostComponent} from './host/host.component';
 import {ListHomeComponent} from './host/list-home/list-home.component';
 import {InforHomeHostComponent} from './host/infor-home-host/infor-home-host.component';
+import {UserComponent} from './user/user.component';
 import {ListHomeUserComponent} from './user/list-home-user/list-home-user.component';
+import {DetailHomeUserComponent} from './user/detail-home-user/detail-home-user.component';
+import {OrderHomeUserComponent} from './user/detail-home-user/order-home-user/order-home-user.component';
 
 
 const routes: Routes = [
@@ -33,7 +36,23 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    component: ListHomeUserComponent
+    component: UserComponent,
+    children: [
+      {
+        path: 'list-home',
+        component: ListHomeUserComponent
+      },
+      {
+        path: ':id',
+        component: DetailHomeUserComponent,
+        children: [
+        ]
+      },
+      {
+        path: ':id/order',
+        component: OrderHomeUserComponent
+      }
+    ]
   },
   {
     path: 'host',

@@ -10,7 +10,7 @@
   <div class="media">
     <div *ngFor="let item of output; index as i">
       <div class="media-left media-middle">
-        <a [routerLink]="['/host/info/home',item.id]"><img class="media-object" src="{{item.imageUrls}}"></a>
+        <a [routerLink]="['/host',item.id]"><img class="media-object" src="{{item.imageUrls}}" width="280" height="280"></a>
       </div>
       <div class="media-body">
         <h4 class="media-heading">{{item.houseName}}</h4>
