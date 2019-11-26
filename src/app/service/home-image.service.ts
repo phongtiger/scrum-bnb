@@ -15,7 +15,7 @@ export class HomeImageService {
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
 
   pushFileToStorage(fileUpload: FileUpload): Observable<number> {
-    const filePath = `${this.basePath}/${fileUpload.file.name}`;
+    const filePath = `${this.basePath}/${fileUpload.file.name + Math.floor(Math.random() * 100000) + Date.now()}`;
     const storageRef = this.storage.ref(filePath);
     const uploadTask = this.storage.upload(filePath, fileUpload.file);
 
