@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HomeService} from '../service/home.service';
+import {FileUpload} from '../FileUpload';
+import {UploadFileService} from '../service/upload-file.service';
+import {HomeImageService} from '../service/home-image.service';
 
 @Component({
   selector: 'app-create-home',
@@ -8,51 +11,65 @@ import {HomeService} from '../service/home.service';
   styleUrls: ['./create-home.component.scss']
 })
 export class CreateHomeComponent implements OnInit {
+  selectedFiles: FileList;
+  currentFileUpload: FileUpload;
+  percentage: number;
   formGroup: FormGroup;
   message: string;
   isCreatFailed = false;
 
   constructor(private homeService: HomeService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private uploadService: HomeImageService) {
   }
 
   ngOnInit() {
     this.formGroup = this.fb.group({
-      name: ['', [Validators.required]],
-      room: ['', [Validators.required]],
+      houseName: ['', [Validators.required]],
       address: ['', [Validators.required]],
-      bedroom: ['', [Validators.required, Validators.min(0)]],
-      bathroom: ['', [Validators.required, Validators.min(0)]],
-      description: ['', [Validators.required]],
-      priceByNight: ['', [Validators.required, Validators.min(0)]],
+      bedroomNumber: ['', [Validators.required, Validators.min(0)]],
+      bathroomNumber: ['', [Validators.required, Validators.min(0)]],
+      area: ['', [Validators.required]],
+      price: ['', [Validators.required, Validators.min(0)]],
       category: ['', [Validators.required]],
+      imageUrls: null
     });
   }
 
   onSubmit() {
     if (this.formGroup.valid) {
+      this.formGroup.patchValue( {imageUrls: this.uploadService.image});
       const {value} = this.formGroup;
-      console.log(value.role);
-      console.log(value);
       this.homeService.createHome(value)
         .subscribe(next => {
           console.log(next);
           this.isCreatFailed = false;
-          this.formGroup.reset({
-            name: '',
-            room: '',
-            address: '',
-            bedroom: '',
-            bathroom: '',
-            description: '',
-            priceByNight: '',
-            category: '',
-          });
+          console.log('Thanh cong');
         }, error => {
           this.message = 'Tạo không thành công';
           this.isCreatFailed = true;
         });
     }
+  }
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload() {
+    const file = this.selectedFiles.item(0);
+    this.selectedFiles = undefined;
+
+    this.currentFileUpload = new FileUpload(file);
+    console.log(this.currentFileUpload);
+    // this.data.setValue({ avatar: this.currentFileUpload.url});
+    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+      percentage => {
+        this.percentage = Math.round(percentage);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isLoggedIn = false;
   message: string;
+  isLogout: boolean;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService, private tokenStorage: TokenStorageService) {
@@ -37,7 +38,9 @@ export class LoginComponent implements OnInit {
         .subscribe(next => {
           console.log(next);
           this.tokenStorage.saveToken(next.accessToken);
+          this.isLoggedIn = true;
           this.message = 'Thành công';
+          this.isLogout = true;
         }, error => this.message = 'Lỗi đăng nhập, sai email hoặc mật khẩu, vui lòng nhập lại'); }
   }
   logout() { this.tokenStorage.signOut(); this.message = 'Bạn đã đăng xuất';

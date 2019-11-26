@@ -15,7 +15,14 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/storage';
-
+import { HostComponent } from './host/host.component';
+import { RoleComponent } from './role/role.component';
+import { ListHomeComponent } from './host/list-home/list-home.component';
+import { UserComponent } from './user/user.component';
+import { InforHomeHostComponent } from './host/infor-home-host/infor-home-host.component';
+import { ListHomeUserComponent } from './user/list-home-user/list-home-user.component';
+import { DetailHomeUserComponent } from './user/detail-home-user/detail-home-user.component';
+import { OrderHomeUserComponent } from './user/detail-home-user/order-home-user/order-home-user.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,15 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
     ProfileComponent,
     ChangePasswordComponent,
     CreateHomeComponent,
-  ],
+    HostComponent,
+    RoleComponent,
+    ListHomeComponent,
+    UserComponent,
+    InforHomeHostComponent,
+    ListHomeUserComponent,
+    DetailHomeUserComponent,
+    OrderHomeUserComponent,
+     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,8 +49,8 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
     ReactiveFormsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule, // for database
-    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

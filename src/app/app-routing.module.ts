@@ -2,9 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
-import {CreateHomeComponent} from './create-home/create-home.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ChangePasswordComponent} from './change-password/change-password.component';
+import {CreateHomeComponent} from './create-home/create-home.component';
+import {RoleComponent} from './role/role.component';
+import {HostComponent} from './host/host.component';
+import {ListHomeComponent} from './host/list-home/list-home.component';
+import {InforHomeHostComponent} from './host/infor-home-host/infor-home-host.component';
+import {UserComponent} from './user/user.component';
+import {ListHomeUserComponent} from './user/list-home-user/list-home-user.component';
+import {DetailHomeUserComponent} from './user/detail-home-user/detail-home-user.component';
+import {OrderHomeUserComponent} from './user/detail-home-user/order-home-user/order-home-user.component';
 
 
 const routes: Routes = [
@@ -23,9 +31,47 @@ const routes: Routes = [
     component: ChangePasswordComponent
   },
   {
-    path: 'create-home',
-    component: CreateHomeComponent
+    path: 'role',
+    component: RoleComponent
   },
+  {
+    path: 'user',
+    component: UserComponent,
+    children: [
+      {
+        path: 'list-home',
+        component: ListHomeUserComponent
+      },
+      {
+        path: ':id',
+        component: DetailHomeUserComponent,
+        children: [
+        ]
+      },
+      {
+        path: ':id/order',
+        component: OrderHomeUserComponent
+      }
+    ]
+  },
+  {
+    path: 'host',
+    component: HostComponent,
+    children: [
+      {
+      path: 'create-home',
+      component: CreateHomeComponent
+    },
+      {
+      path: 'list-home',
+        component: ListHomeComponent
+      },
+      {
+        path: ':id',
+        component: InforHomeHostComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

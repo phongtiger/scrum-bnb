@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {IHome} from '../i-home';
+import {Observable} from 'rxjs';
+import {IProfile} from '../i-profile';
+import {IRole} from '../i-role';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
+export class RoleService {
   private readonly API_URL = 'http://localhost:8080';
   constructor(private http: HttpClient) { }
-  createHome(home: Partial<IHome>): Observable<IHome> {
-    return this.http.post<IHome>(`${this.API_URL}/api/host/createHouse`, home);
+  getRole(): Observable<IRole> {
+    return this.http.get<IRole>(`${this.API_URL}/profile/role`);
   }
 }

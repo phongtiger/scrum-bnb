@@ -1,27 +1,29 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 import {AngularFireStorage} from '@angular/fire/storage';
+import {FileUpload} from '../FileUpload';
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
-import {IFileUpLoad} from '../i-fileUpLoad';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadFileService {
+  public image: string;
   private basePath = '/uploads';
 
-  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) {
-  }
+  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
 
-  pushFileToStorage(fileUpload: IFileUpLoad): Observable<number> {
+  pushFileToStorage(fileUpload: FileUpload): Observable<number> {
     const filePath = `${this.basePath}/${fileUpload.file.name}`;
     const storageRef = this.storage.ref(filePath);
     const uploadTask = this.storage.upload(filePath, fileUpload.file);
+
     uploadTask.snapshotChanges().pipe(
       finalize(() => {
         storageRef.getDownloadURL().subscribe(downloadURL => {
           console.log('File available at', downloadURL);
+          this.image = downloadURL;
           fileUpload.url = downloadURL;
           fileUpload.name = fileUpload.file.name;
           this.saveFileData(fileUpload);
@@ -32,16 +34,16 @@ export class UploadFileService {
     return uploadTask.percentageChanges();
   }
 
-  private saveFileData(fileUpload: IFileUpLoad) {
+  private saveFileData(fileUpload: FileUpload) {
     this.db.list(this.basePath).push(fileUpload);
   }
 
-  getFileUploads(numberItems): AngularFireList<IFileUpLoad> {
+  getFileUploads(numberItems): AngularFireList<FileUpload> {
     return this.db.list(this.basePath, ref =>
       ref.limitToLast(numberItems));
   }
 
-  deleteFileUpload(fileUpload: IFileUpLoad) {
+  deleteFileUpload(fileUpload: FileUpload) {
     this.deleteFileDatabase(fileUpload.key)
       .then(() => {
         this.deleteFileStorage(fileUpload.name);

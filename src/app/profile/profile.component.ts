@@ -4,8 +4,8 @@ import {TokenStorageService} from '../auth/token-storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {IProfile} from '../i-profile';
 import {ProfileService} from '../service/profile.service';
-import {IFileUpLoad} from '../i-fileUpLoad';
-import {UploadFileService} from '../service/uploadfile.service';
+import {FileUpload} from '../FileUpload';
+import {UploadFileService} from '../service/upload-file.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +14,7 @@ import {UploadFileService} from '../service/uploadfile.service';
 })
 export class ProfileComponent implements OnInit {
   selectedFiles: FileList;
-  currentFileUpload: IFileUpLoad;
+  currentFileUpload: FileUpload;
   percentage: number;
   acc: IProfile;
   data: FormGroup;
@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
       name: '',
       phone: '',
       address: '',
-      avatar: ''
+      avatar: null
     })
     ;
     this.token = this.tokenStorage.getToken();
@@ -48,13 +48,14 @@ export class ProfileComponent implements OnInit {
     );
   }
   editMember() {
+    this.data.patchValue({ avatar: this.uploadService.image});
     this.profileService.updateAcc(this.data.value).subscribe(next => {
+      console.log(this.data.value);
       this.message = 'Update success';
     });
   }
   logout() { this.tokenStorage.signOut(); this.message = 'Bạn đã đăng xuất';
   }
-
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
@@ -62,8 +63,10 @@ export class ProfileComponent implements OnInit {
   upload() {
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
-    this.currentFileUpload = new IFileUpLoad(file);
+
+    this.currentFileUpload = new FileUpload(file);
     console.log(this.currentFileUpload);
+    // this.data.setValue({ avatar: this.currentFileUpload.url});
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
       percentage => {
         this.percentage = Math.round(percentage);
@@ -73,4 +76,5 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+
 }

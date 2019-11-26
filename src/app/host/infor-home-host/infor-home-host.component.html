@@ -1,0 +1,22 @@
+
+<h3>Day là danh sach nha</h3>
+<div class="container">
+  <div class="media">
+    <div>
+      <div class="media-left media-middle">
+        <a [routerLink]="['/host',item.id]"><img class="media-object" src="{{item.imageUrls}}"></a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">Name: {{item.houseName}}</h4>
+        <p>Dien tich: {{item.area}}</p>
+        <p>Dia chi: {{item.address}}</p>
+        <p>So phong tam: {{item.bathroomNumber}}</p>
+        <p>So phong ngu: {{item.bedroomNumber}}</p>
+        <p>Loai phong: {{item.category.name}}</p>
+        <p>Gia: {{item.price}}</p>
+      </div>
+      <a [routerLink]="['/set',item.id]" class="btn btn-info">Đặt nhà</a>
+    </div>
+  </div>
+</div>
+
