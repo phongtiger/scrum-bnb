@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
+import {RoleService} from '../service/role.service';
 
 @Component({
   selector: 'app-login',
@@ -12,22 +13,22 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isLoggedIn = false;
   message: string;
-  isLogout: boolean;
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService, private tokenStorage: TokenStorageService) {
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService,
+    private roleService: RoleService) {
   }
   ngOnInit() {
+    this.roleService.getRole().subscribe(next => {
+      console.log(next);
+      this.tokenStorage.saveAuthorities(next.name);
+      this.isLoggedIn = true;
+    }, error => this.isLoggedIn = false);
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
-    this.loginForm.patchValue({
-      email: 'info@example.com'
-    });
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
-    }
     this.tokenStorage.saveToken(this.tokenStorage.getTokenCookies());
   }
   onSubmit() {
@@ -40,7 +41,6 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveToken(next.accessToken);
           this.isLoggedIn = true;
           this.message = 'Thành công';
-          this.isLogout = true;
         }, error => this.message = 'Lỗi đăng nhập, sai email hoặc mật khẩu, vui lòng nhập lại'); }
   }
   logout() { this.tokenStorage.signOut(); this.message = 'Bạn đã đăng xuất';

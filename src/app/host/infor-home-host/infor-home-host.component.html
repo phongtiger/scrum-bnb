@@ -3,8 +3,8 @@
 <div class="container">
   <div class="media">
     <div>
-      <div class="media-left media-middle">
-        <a [routerLink]="['/host',item.id]"><img class="media-object" src="{{item.imageUrls}}"></a>
+      <div class="media-left media-middle" *ngFor="let im of image; index as i">
+        <img class="media-object" src="{{im}}" width="50" height="50">
       </div>
       <div class="media-body">
         <h4 class="media-heading">Name: {{item.houseName}}</h4>

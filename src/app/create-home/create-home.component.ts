@@ -38,11 +38,11 @@ export class CreateHomeComponent implements OnInit {
 
   onSubmit() {
     if (this.formGroup.valid) {
-      this.formGroup.patchValue( {imageUrls: this.uploadService.image});
+      this.formGroup.patchValue( {imageUrls: this.uploadService.image.slice(9).trim()});
       const {value} = this.formGroup;
+      console.log(value);
       this.homeService.createHome(value)
         .subscribe(next => {
-          console.log(next);
           this.isCreatFailed = false;
           console.log('Thanh cong');
         }, error => {
@@ -60,7 +60,7 @@ export class CreateHomeComponent implements OnInit {
     this.selectedFiles = undefined;
 
     this.currentFileUpload = new FileUpload(file);
-    console.log(this.currentFileUpload);
+    // console.log(this.currentFileUpload);
     // this.data.setValue({ avatar: this.currentFileUpload.url});
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
       percentage => {

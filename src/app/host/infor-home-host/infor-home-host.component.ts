@@ -10,6 +10,7 @@ import {HomeHost} from '../../home-host';
 })
 export class InforHomeHostComponent implements OnInit {
   item: HomeHost;
+  image: any;
   private message: string;
   constructor(private route: ActivatedRoute,
               private hostService: HostService) { }
@@ -18,7 +19,9 @@ export class InforHomeHostComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.hostService.getHomebyId(id).subscribe(
       next => (
-        this.item = next
+        this.item = next,
+        this.image = next.imageUrls.split(' ' ),
+        console.log(this.image)
       ), error3 => { this.message = 'không tồn tại'; }
     );
   }
