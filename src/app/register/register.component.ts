@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
       this.accService.createAcc(value)
         .subscribe(next => {
           console.log(next);
-          this.message = 'Tạo thanh cong';
+          this.message = 'Tạo thành công';
           this.registerForm.reset({
             email: '',
             password: '',
