@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {IHome} from '../i-home';
 import {Observable} from 'rxjs';
 import {HomeHost} from '../home-host';
+import {StatusSetByHost} from '../statusSetByHost';
+import {JwtResponse} from '../JwResponse';
 
 
 @Injectable({
@@ -21,5 +23,9 @@ export class HostService {
 
   getHomebyId(id: number): Observable<HomeHost> {
     return this.http.get<HomeHost>(`${this.API_URL}/api/guest/${id}`);
+  }
+
+  updateStatusHome(home: StatusSetByHost): Observable<JwtResponse> {
+    return this.http.put<JwtResponse>(`${this.API_URL}/api/host/updatestatus`, home);
   }
 }

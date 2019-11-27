@@ -15,7 +15,16 @@
         <p>Loai phong: {{item.category.name}}</p>
         <p>Gia: {{item.price}}</p>
       </div>
-      <a [routerLink]="['/set',item.id]" class="btn btn-info">Đặt nhà</a>
+      <div class="form-group" [formGroup]="statusHomeForm" (ngSubmit)="onSubmit()">
+        <label class="col">
+          Chọn mục đích sử dụng:
+          <select  formControlName="status" class="form-control">
+            <option [defaultSelected]="1" value="1">AVAILABLE</option>
+            <option value="2">BOOKED</option>
+            <option value="3">RENOVATING</option>
+          </select>
+        </label>
+      </div>
     </div>
   </div>
 </div>

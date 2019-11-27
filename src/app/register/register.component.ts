@@ -40,6 +40,9 @@ export class RegisterComponent implements OnInit {
         case '2':
           value.role = ['host'];
           break;
+        default:
+          value.role = ['user'];
+          break;
       }
       console.log(value);
       this.accService.createAcc(value)
