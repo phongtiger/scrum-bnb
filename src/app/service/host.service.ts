@@ -25,7 +25,7 @@ export class HostService {
     return this.http.get<HomeHost>(`${this.API_URL}/api/guest/${id}`);
   }
 
-  updateStatusHome(home: StatusSetByHost): Observable<JwtResponse> {
-    return this.http.put<JwtResponse>(`${this.API_URL}/api/host/updatestatus`, home);
+  updateStatusHome(status: StatusSetByHost): Observable<JwtResponse> {
+    return this.http.put<JwtResponse>(`${this.API_URL}/api/host/updatestatus`, status);
   }
 }
