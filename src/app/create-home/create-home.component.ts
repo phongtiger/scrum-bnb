@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HomeService} from '../service/home.service';
 import {FileUpload} from '../FileUpload';
-import {UploadFileService} from '../service/upload-file.service';
 import {HomeImageService} from '../service/home-image.service';
 
 @Component({
@@ -41,6 +40,23 @@ export class CreateHomeComponent implements OnInit {
       this.formGroup.patchValue( {imageUrls: this.uploadService.image.slice(9).trim()});
       const {value} = this.formGroup;
       console.log(value);
+      switch (value.category) {
+        case 1:
+          value.category = { name: 'Hotel'};
+          break;
+        case 2:
+          value.category = { name: 'House'};
+          break;
+        case 3:
+          value.category = { name: 'Resort'};
+          break;
+        case 4:
+          value.category = { name: 'Villa'};
+          break;
+        default:
+          value.category = { name: 'House'};
+          break;
+      }
       this.homeService.createHome(value)
         .subscribe(next => {
           this.isCreatFailed = false;
@@ -60,8 +76,6 @@ export class CreateHomeComponent implements OnInit {
     this.selectedFiles = undefined;
 
     this.currentFileUpload = new FileUpload(file);
-    // console.log(this.currentFileUpload);
-    // this.data.setValue({ avatar: this.currentFileUpload.url});
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
       percentage => {
         this.percentage = Math.round(percentage);
