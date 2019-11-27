@@ -66,7 +66,6 @@ export class ProfileComponent implements OnInit {
 
     this.currentFileUpload = new FileUpload(file);
     console.log(this.currentFileUpload);
-    // this.data.setValue({ avatar: this.currentFileUpload.url});
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
       percentage => {
         this.percentage = Math.round(percentage);

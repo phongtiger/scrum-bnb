@@ -1,5 +1,5 @@
 export interface StatusSetByHost {
-  idHome: number;
+  id: number;
   fromDate: string;
   toDate: string;
   status: string;

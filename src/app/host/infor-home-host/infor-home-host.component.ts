@@ -20,7 +20,7 @@ export class InforHomeHostComponent implements OnInit {
 
   ngOnInit() {
     this.statusHomeForm = this.fb.group({
-      idHome: '',
+      id: '',
       fromDate: '',
       toDate: '',
       status: '',
@@ -37,6 +37,7 @@ export class InforHomeHostComponent implements OnInit {
 
   onSubmit() {
     if (this.statusHomeForm.valid) {
+      this.statusHomeForm.patchValue({ id: this.item.id});
       const {value} = this.statusHomeForm;
       console.log(value.status);
       switch (value.status) {
