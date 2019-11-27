@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenStorageService} from '../auth/token-storage.service';
 
 @Component({
   selector: 'app-desktop',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./desktop.component.scss']
 })
 export class DesktopComponent implements OnInit {
+  message: string;
 
-  constructor() { }
+  constructor(    private tokenStorage: TokenStorageService,
+  ) { }
 
   ngOnInit() {
   }
-
+  logout() {
+    this.tokenStorage.signOut();
+  }
 }

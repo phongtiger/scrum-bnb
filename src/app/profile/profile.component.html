@@ -1,16 +1,16 @@
-<div class="profile">
-  <div class="alert alert-success" role="alert" *ngIf="message">
-    <h4 class="alert-heading">{{message}}</h4>
-  </div>
-  <div><br/></div>
-  <div class="row">
-    <div class="col-md-4" ><a routerLink="/addprofile">Add Profile</a>
-      <div><br/></div>
-      <a routerLink="/editPassword">Change Password</a>
-    </div>
-    <br/></div>
-  <a routerLink="/create-home">Create home </a>
-</div>
+<!--<div class="profile">-->
+<!--  <div class="alert alert-success" role="alert" *ngIf="message">-->
+<!--    <h4 class="alert-heading">{{message}}</h4>-->
+<!--  </div>-->
+<!--  <div><br/></div>-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-4" ><a routerLink="/addprofile">Add Profile</a>-->
+<!--      <div><br/></div>-->
+<!--      <a routerLink="/editPassword">Change Password</a>-->
+<!--    </div>-->
+<!--    <br/></div>-->
+<!--  <a routerLink="/create-home">Create home </a>-->
+<!--</div>-->
     <div class="col-md-4" >
       <div *ngIf="currentFileUpload" class="progress">
         <div class="progress-bar progress-bar-info progress-bar-striped"
@@ -19,7 +19,6 @@
              [ngStyle]="{width:percentage+'%'}">
           {{percentage}}%</div>
       </div>
-
       <label class="btn btn-default"> <input type="file"
                                              (change)="selectFile($event)">
       </label>

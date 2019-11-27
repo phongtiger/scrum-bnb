@@ -15,11 +15,8 @@ function comparePassword(c: AbstractControl) {
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
   registerForm: FormGroup;
   message: string;
-  isSignUp = true;
-  message2 = false;
   constructor(private accService: AccountService,
               private fb: FormBuilder) {
   }
@@ -30,9 +27,6 @@ export class RegisterComponent implements OnInit {
       confirmPassword: '',
       role: '',
     }, {validator: comparePassword});
-    this.registerForm.patchValue({
-      email: 'info@example.com'
-    });
   }
 
   onSubmit() {
@@ -40,35 +34,23 @@ export class RegisterComponent implements OnInit {
       const {value} = this.registerForm;
       console.log(value.role);
       switch (value.role) {
-        case '2':
+        case '1':
           value.role = ['user'];
           break;
-        case '3':
-          value.role = ['pm'];
+        case '2':
+          value.role = ['host'];
           break;
       }
       console.log(value);
       this.accService.createAcc(value)
         .subscribe(next => {
           console.log(next);
-          this.isSignUp = true;
-          this.message2 = true;
-          // this.message = ' ';
+          this.message = 'Tạo thành công';
           this.registerForm.reset({
             email: '',
             password: '',
           });
-        }, error => {
-          // if ((this.isSignUp === false) && (this.message2 === false)) {
-          //   this.message = 'Tạo không thành công';
-          // }
-          // if ((this.isSignUp === true) && (this.message2 === false)) {
-          //   this.message = 'abcdef';
-          // }
-          // this.message2 = true;
-          this.message = 'Tạo không thành công';
-          // this.isSignUp = false;
-        });
+        }, error => this.message = 'Tạo không thành công' ) ;
     }
   }
 

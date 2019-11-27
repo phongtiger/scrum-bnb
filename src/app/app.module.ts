@@ -23,25 +23,27 @@ import { InforHomeHostComponent } from './host/infor-home-host/infor-home-host.c
 import { ListHomeUserComponent } from './user/list-home-user/list-home-user.component';
 import { DetailHomeUserComponent } from './user/detail-home-user/detail-home-user.component';
 import { OrderHomeUserComponent } from './user/detail-home-user/order-home-user/order-home-user.component';
+import {DesktopComponent} from './desktop/desktop.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RegisterComponent,
-    HeadComponent,
-    LoginComponent,
-    ProfileComponent,
-    ChangePasswordComponent,
-    CreateHomeComponent,
-    HostComponent,
-    RoleComponent,
-    ListHomeComponent,
-    UserComponent,
-    InforHomeHostComponent,
-    ListHomeUserComponent,
-    DetailHomeUserComponent,
-    OrderHomeUserComponent,
-     ],
+    declarations: [
+        AppComponent,
+        RegisterComponent,
+        HeadComponent,
+        LoginComponent,
+        ProfileComponent,
+        ChangePasswordComponent,
+        CreateHomeComponent,
+        HostComponent,
+        RoleComponent,
+        ListHomeComponent,
+        UserComponent,
+        InforHomeHostComponent,
+        ListHomeUserComponent,
+        DetailHomeUserComponent,
+        OrderHomeUserComponent,
+        DesktopComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
