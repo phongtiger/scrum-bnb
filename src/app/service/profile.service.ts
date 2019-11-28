@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {IProfile} from '../i-profile';
-import {JwtResponse} from '../JwResponse';
-import {IPass} from '../i-pass';
+import {IProfile} from '../interface/i-profile';
+import {JwtResponse} from '../interface/JwResponse';
+import {IPass} from '../interface/i-pass';
 
 @Injectable({
   providedIn: 'root'

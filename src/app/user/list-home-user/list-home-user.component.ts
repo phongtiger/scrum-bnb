@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HomeHost} from '../../home-host';
+import {HomeHost} from '../../interface/home-host';
 import {UserService} from '../../service/user.service';
 
 @Component({

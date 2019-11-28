@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {IProfile} from '../i-profile';
+import {IProfile} from '../interface/i-profile';
 import {ProfileService} from '../service/profile.service';
-import {FileUpload} from '../FileUpload';
+import {FileUpload} from '../interface/FileUpload';
 import {UploadFileService} from '../service/upload-file.service';
 
 @Component({

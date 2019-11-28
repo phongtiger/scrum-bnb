@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {IHome} from '../i-home';
+import {IHome} from '../interface/i-home';
 import {Observable} from 'rxjs';
-import {HomeHost} from '../home-host';
-import {StatusSetByHost} from '../statusSetByHost';
-import {JwtResponse} from '../JwResponse';
+import {HomeHost} from '../interface/home-host';
+import {StatusSetByHost} from '../interface/statusSetByHost';
+import {JwtResponse} from '../interface/JwResponse';
 
 
 @Injectable({
@@ -26,6 +26,6 @@ export class HostService {
   }
 
   updateStatusHome(status: StatusSetByHost): Observable<JwtResponse> {
-    return this.http.put<JwtResponse>(`${this.API_URL}/api/host/updatestatus`, status);
+    return this.http.post<JwtResponse>(`${this.API_URL}/api/status/set`, status);
   }
 }

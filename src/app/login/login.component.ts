@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {RoleService} from '../service/role.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
-    private roleService: RoleService) {
+    private roleService: RoleService,
+    private  router: Router) {
   }
   ngOnInit() {
 
@@ -48,7 +50,18 @@ export class LoginComponent implements OnInit {
           this.roleService.getRole().subscribe(next2 => {
               console.log(next2);
               this.user.emit(next2.id);
-            }, error => this.message = 'khong lay dk role');
+              switch (next2.id) {
+                case 1:
+                  this.router.navigate(['user']);
+                  break;
+                case 2:
+                  this.router.navigate(['host']);
+                  break;
+                case 3:
+                  this.router.navigate(['admin']);
+                  break;
+              }
+            }, error => this.message = 'Khong thanh cong');
         }, error => this.message = 'Lỗi đăng nhập, sai email hoặc mật khẩu, vui lòng nhập lại'); }
   }
   // logout() { this.tokenStorage.signOut(); this.message = 'Bạn đã đăng xuất';

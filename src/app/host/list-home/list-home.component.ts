@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {IHome} from '../../i-home';
+import {IHome} from '../../interface/i-home';
 import {HostService} from '../../service/host.service';
 import {error} from 'util';
 import {ProfileService} from '../../service/profile.service';
-import {HomeHost} from '../../home-host';
+import {HomeHost} from '../../interface/home-host';
 
 @Component({
   selector: 'app-list-home',

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {IProfile} from '../i-profile';
-import {IRole} from '../i-role';
+import {IProfile} from '../interface/i-profile';
+import {IRole} from '../interface/i-role';
 
 @Injectable({
   providedIn: 'root'

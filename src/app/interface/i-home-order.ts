@@ -1,6 +1,6 @@
 export interface IHomeOrder {
   id: number;
-  tenant: string;
+  tenant: number;
   checkin: string;
   checkout: string;
   numberGuest: string;

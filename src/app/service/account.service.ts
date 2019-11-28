@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {IRegister} from '../i-register';
+import {IRegister} from '../interface/i-register';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 

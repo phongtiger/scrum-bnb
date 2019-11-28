@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HomeService} from '../service/home.service';
-import {FileUpload} from '../FileUpload';
+import {FileUpload} from '../interface/FileUpload';
 import {HomeImageService} from '../service/home-image.service';
 
 @Component({

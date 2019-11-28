@@ -15,24 +15,24 @@
         <p>Loai phong: {{item.category.name}}</p>
         <p>Gia: {{item.price}}</p>
       </div>
-      <div class="form-group" [formGroup]="statusHomeForm" (ngSubmit)="onSubmit()">
+      <form class="form-group" [formGroup]="statusHomeForm" (ngSubmit)="onSubmit()">
         <label class="col">
           Chọn mục đích sử dụng:
           <select  formControlName="status" class="form-control">
             <option [defaultSelected]="1" value="1">AVAILABLE</option>
             <option value="2">BOOKED</option>
-            <option value="3">RENOVATING</option>
           </select>
         </label>
         <div class="form-group">
           Ngay bat dau
-          <input formControlName="fromDate" type="text" class="form-control" >
+          <input formControlName="beginDate" type="date" class="form-control" >
         </div>
         <div class="form-group">
           Ngay ket thuc
-          <input formControlName="toDate" type="text" class="form-control" >
+          <input formControlName="endDate" type="date" class="form-control" >
         </div>
-      </div>
+        <button (click)="onSubmit()">Cập nhật</button>
+      </form>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HostService} from '../../service/host.service';
 import {ActivatedRoute} from '@angular/router';
-import {HomeHost} from '../../home-host';
+import {HomeHost} from '../../interface/home-host';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
@@ -20,9 +20,9 @@ export class InforHomeHostComponent implements OnInit {
 
   ngOnInit() {
     this.statusHomeForm = this.fb.group({
-      id: '',
-      fromDate: '',
-      toDate: '',
+      house: '',
+      beginDate: '',
+      endDate: '',
       status: '',
     });
     const id = +this.route.snapshot.paramMap.get('id');
@@ -37,21 +37,18 @@ export class InforHomeHostComponent implements OnInit {
 
   onSubmit() {
     if (this.statusHomeForm.valid) {
-      this.statusHomeForm.patchValue({ id: this.item.id});
+      this.statusHomeForm.patchValue({ house: {id: this.item.id}});
       const {value} = this.statusHomeForm;
       console.log(value.status);
       switch (value.status) {
         case '1':
-          value.status = 'AVAILABLE';
+          value.status = { name: 'AVAILABLE'};
           break;
         case '2':
-          value.status = 'BOOKED';
-          break;
-        case '3':
-          value.status = 'RENOVATING';
+          value.status = { name: 'BOOKED'};
           break;
         default:
-          value.status = 'AVAILABLE';
+          value.status = { name: 'AVAILABLE'};
           break;
       }
       console.log(value);
@@ -62,4 +59,10 @@ export class InforHomeHostComponent implements OnInit {
         }, error => this.message = 'Cap nhat khong thành công' ) ;
     }
   }
+
+  // formatDate(date) {
+  //   const from = date.split('-');
+  //   const f = new Date(from[2], from[1], from[0]);
+  //   const dateNew = f.getFullYear() + '-' + f.getMonth() + '-' + f.getDate();
+  // }
 }
