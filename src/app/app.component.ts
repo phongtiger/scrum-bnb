@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TokenStorageService} from './auth/token-storage.service';
 import {RoleService} from './service/role.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,19 +8,28 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  private user: number;
   private message = '';
-  public taikhoan: number;
+
   constructor(private tokenStorage: TokenStorageService,
               private roleService: RoleService,
-              private  router: Router) { }
-  logout() { this.tokenStorage.signOut(); this.message = 'ban da dang xuat';
+              private role: RoleService) {
   }
 
+  logout() {
+    this.tokenStorage.signOut();
+    this.message = 'ban da dang xuat';
+  }
+
+// console.log(value);
   ngOnInit() {
-    this.router.navigate(['login']);
-  }
-
-  showStatus(event: number) {
-    this.taikhoan = event;
+    this.role.getRole().subscribe(next => {
+      console.log(this.tokenStorage);
+      this.tokenStorage.saveAuthorities(next.name);
+      this.user = next.id;
+      this.role.user = next.id;
+      this.message = 'Lay duoc role';
+    }, error => this.message = 'khong lay dk role');
   }
 }
+
