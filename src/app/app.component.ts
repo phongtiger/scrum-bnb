@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
     this.message = 'ban da dang xuat';
   }
 
+// console.log(value);
   ngOnInit() {
     this.role.getRole().subscribe(next => {
       console.log(this.tokenStorage);
@@ -30,8 +31,5 @@ export class AppComponent implements OnInit {
       this.message = 'Lay duoc role';
     }, error => this.message = 'khong lay dk role');
   }
-
-  // public isAuthenticated():boolean{
-  //   return moment().isB
-  // }+
 }
+
