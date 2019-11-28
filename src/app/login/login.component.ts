@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isLoggedIn = false;
   message: string;
+  role: number;
+  @Output('checkedLogin')
+  isLogin = new EventEmitter<number>();
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -40,6 +43,12 @@ export class LoginComponent implements OnInit {
           console.log(next);
           this.tokenStorage.saveToken(next.accessToken);
           this.isLoggedIn = true;
+          this.roleService.getRole().subscribe(next2 => {
+            console.log(next2);
+            this.role = next2.id;
+            this.isLoggedIn = true;
+          }, error => this.isLoggedIn = false);
+          this.isLogin.emit(this.role);
           this.message = 'Thành công';
         }, error => this.message = 'Lỗi đăng nhập, sai email hoặc mật khẩu, vui lòng nhập lại'); }
   }

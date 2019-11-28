@@ -13,9 +13,14 @@ import {UserComponent} from './user/user.component';
 import {ListHomeUserComponent} from './user/list-home-user/list-home-user.component';
 import {DetailHomeUserComponent} from './user/detail-home-user/detail-home-user.component';
 import {OrderHomeUserComponent} from './user/detail-home-user/order-home-user/order-home-user.component';
+import {HeadComponent} from './head/head.component';
 
 
 const routes: Routes = [
+  {
+    path: 'list-home',
+    component: ListHomeComponent
+  },
   {path: 'register',
     component: RegisterComponent
   },
