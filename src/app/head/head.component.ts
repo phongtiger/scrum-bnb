@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class HeadComponent implements OnInit {
   @Input()
-  taikhoan = 2;
+  taikhoan = 0 ;
   message: string;
   constructor(private tokenStorage: TokenStorageService,
               private roleService: RoleService,
