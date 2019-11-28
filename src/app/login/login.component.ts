@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isLoggedIn = false;
   message: string;
+  @Input()
+  user: number;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -41,6 +43,10 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveToken(next.accessToken);
           this.isLoggedIn = true;
           this.message = 'Thành công';
+          this.roleService.getRole().subscribe(next2 => {
+              console.log(next2);
+              this.user = next2.id;
+            }, error => this.message = 'khong lay dk role');
         }, error => this.message = 'Lỗi đăng nhập, sai email hoặc mật khẩu, vui lòng nhập lại'); }
   }
   // logout() { this.tokenStorage.signOut(); this.message = 'Bạn đã đăng xuất';

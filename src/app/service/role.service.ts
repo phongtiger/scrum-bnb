@@ -8,6 +8,7 @@ import {IRole} from '../i-role';
   providedIn: 'root'
 })
 export class RoleService {
+  public user: number;
   private readonly API_URL = 'http://localhost:8080';
   constructor(private http: HttpClient) { }
   getRole(): Observable<IRole> {
