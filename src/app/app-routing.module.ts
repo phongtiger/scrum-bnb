@@ -24,9 +24,6 @@ const routes: Routes = [
   {path: 'register',
     component: RegisterComponent
   },
-  {path: 'login',
-    component: LoginComponent
-  },
   {
     path: 'addprofile',
     component: ProfileComponent
@@ -50,8 +47,6 @@ const routes: Routes = [
       {
         path: ':id',
         component: DetailHomeUserComponent,
-        children: [
-        ]
       },
       {
         path: ':id/order',
