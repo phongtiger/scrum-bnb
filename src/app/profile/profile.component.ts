@@ -36,7 +36,6 @@ export class ProfileComponent implements OnInit {
       avatar: null
     })
     ;
-    this.token = this.tokenStorage.getToken();
     this.profileService.getOneAccToken().subscribe(
       next => {
         this.acc = next;

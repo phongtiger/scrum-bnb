@@ -16,7 +16,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import { HostComponent } from './host/host.component';
-import { RoleComponent } from './role/role.component';
 import { ListHomeComponent } from './host/list-home/list-home.component';
 import { UserComponent } from './user/user.component';
 import { InforHomeHostComponent } from './host/infor-home-host/infor-home-host.component';
@@ -25,6 +24,7 @@ import { DetailHomeUserComponent } from './user/detail-home-user/detail-home-use
 import { OrderHomeUserComponent } from './user/detail-home-user/order-home-user/order-home-user.component';
 import {DesktopComponent} from './desktop/desktop.component';
 import { BookListOneHomeComponent } from './host/infor-home-host/book-list-one-home/book-list-one-home.component';
+import { TrangchuComponent } from './trangchu/trangchu.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +36,6 @@ import { BookListOneHomeComponent } from './host/infor-home-host/book-list-one-h
         ChangePasswordComponent,
         CreateHomeComponent,
         HostComponent,
-        RoleComponent,
         ListHomeComponent,
         UserComponent,
         InforHomeHostComponent,
@@ -45,6 +44,7 @@ import { BookListOneHomeComponent } from './host/infor-home-host/book-list-one-h
         OrderHomeUserComponent,
         DesktopComponent,
         BookListOneHomeComponent,
+        TrangchuComponent,
     ],
   imports: [
     BrowserModule,

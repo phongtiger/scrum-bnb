@@ -24,7 +24,6 @@ export class ChangePasswordComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
     })
     ;
-    this.token = this.tokenStorage.getToken();
   }
   editMember() {
     this.profileService.updatePass(this.passForm.value).subscribe(next => {
