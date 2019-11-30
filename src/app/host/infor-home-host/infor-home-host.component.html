@@ -14,6 +14,7 @@
         <p>So phong ngu: {{item.bedroomNumber}}</p>
         <p>Loai phong: {{item.category.name}}</p>
         <p>Gia: {{item.price}}</p>
+        <a class="btn" [routerLink]="['booklist']">Xem danh sách book </a>
       </div>
       <form class="form-group" [formGroup]="statusHomeForm" (ngSubmit)="onSubmit()">
         <label class="col">
