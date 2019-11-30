@@ -14,12 +14,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="thongbaodesktop"><a href="" *ngIf="message">{{message}}</a></li>
         <li class="dropdown" *ngIf="tokenStorage.getAuthorities() != null">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="rlink" *ngIf="tokenStorage.getAuthorities() === 'ROLE_HOST'"><a routerLink="/host">Đăng nhập với quyền: {{tokenStorage.getAuthoritiesLC()}}</a></li>
-            <li class="rlink" *ngIf="tokenStorage.getAuthorities() === 'ROLE_USER'"><a routerLink="/host">Đăng nhập với quyền: {{tokenStorage.getAuthoritiesLC()}}</a></li>
+            <li class="rlink" *ngIf="tokenStorage.getAuthorities() === 'ROLE_USER'"><a routerLink="/user">Đăng nhập với quyền: {{tokenStorage.getAuthoritiesLC()}}</a></li>
             <li class="rlink" ><a routerLink="/addprofile" >Cập nhật thông tin tài khoản</a></li>
             <li class="rlink"><a routerLink="/editPassword">Đổi mật khẩu</a></li>
 <!--            <li role="separator" class="divider"></li>-->
