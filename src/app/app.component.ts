@@ -19,18 +19,14 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.tokenStorage.signOut();
-    this.role.user = null;
     this.message = 'ban da dang xuat';
   }
-
-// console.log(value);
   ngOnInit() {
     this.router.navigate(['trangchu']);
     this.role.getRole().subscribe(next => {
       console.log(this.tokenStorage);
       this.tokenStorage.saveAuthorities(next.name);
       this.user = next.id;
-      this.role.user = next.id;
       console.log('check duoc user');
     }, error => this.message = 'khong check duoc user');
   }

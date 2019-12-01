@@ -70,6 +70,4 @@ export class LoginComponent implements OnInit {
         }, error => this.message = 'Lỗi đăng nhập, sai email hoặc mật khẩu, vui lòng nhập lại');
     }
   }
-  // logout() { this.tokenStorage.signOut(); this.message = 'Bạn đã đăng xuất';
-  // }
 }

@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
               private fb: FormBuilder,
               private router: Router,
               private profileService: ProfileService,
-              private tokenStorage: TokenStorageService,
+              private tokenStorageService: TokenStorageService,
               private uploadService: UploadFileService) { }
 
   ngOnInit() {
@@ -52,8 +52,6 @@ export class ProfileComponent implements OnInit {
       console.log(this.data.value);
       this.message = 'Update success';
     });
-  }
-  logout() { this.tokenStorage.signOut(); this.message = 'Bạn đã đăng xuất';
   }
   selectFile(event) {
     this.selectedFiles = event.target.files;

@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HeadComponent } from './head/head.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import {httpInterceptorProviders} from './auth/auth-interceptor';
@@ -30,7 +29,6 @@ import { TrangchuComponent } from './trangchu/trangchu.component';
     declarations: [
         AppComponent,
         RegisterComponent,
-        HeadComponent,
         LoginComponent,
         ProfileComponent,
         ChangePasswordComponent,

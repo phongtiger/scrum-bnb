@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Order} from '../../../interface/order';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AccountService} from '../../../service/account.service';
 import {UserService} from '../../../service/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {ProfileService} from '../../../service/profile.service';
-import {IHomeOrder} from '../../../interface/i-home-order';
 import {StatusListUser} from '../../../interface/StatusListUser';
 
 @Component({

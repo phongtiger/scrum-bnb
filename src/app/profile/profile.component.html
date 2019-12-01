@@ -1,4 +1,6 @@
-<div class="container">
+<div class="alert alert-danger" role="alert" *ngIf="tokenStorageService.getAuthoritiesLC() === null">Bạn không có quyền truy cập trang này</div>
+
+<div class="container" *ngIf="tokenStorageService.getAuthoritiesLC()">
   <div class="row">
     <div class="col-md-6">
       <div *ngIf="currentFileUpload" class="progress">

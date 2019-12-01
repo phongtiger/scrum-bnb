@@ -1,4 +1,5 @@
-<div class="container">
+<div class="alert alert-danger" role="alert" *ngIf="tokenStorageService.getAuthoritiesLC() != 'ROLE_HOST'">Bạn không có quyền truy cập trang này</div>
+<div class="container" *ngIf="tokenStorageService.getAuthoritiesLC() === 'ROLE_HOST'">
   <div *ngIf="currentFileUpload" class="progress">
     <div class="progress-bar progress-bar-info progress-bar-striped"
          role="progressbar" attr.aria-valuenow="{{percentage}}"
