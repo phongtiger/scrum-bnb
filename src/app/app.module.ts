@@ -24,6 +24,7 @@ import { OrderHomeUserComponent } from './user/detail-home-user/order-home-user/
 import {DesktopComponent} from './desktop/desktop.component';
 import { BookListOneHomeComponent } from './host/infor-home-host/book-list-one-home/book-list-one-home.component';
 import { TrangchuComponent } from './trangchu/trangchu.component';
+import { ListOrderUserComponent } from './user/list-order-user/list-order-user.component';
 
 @NgModule({
     declarations: [
@@ -43,6 +44,7 @@ import { TrangchuComponent } from './trangchu/trangchu.component';
         DesktopComponent,
         BookListOneHomeComponent,
         TrangchuComponent,
+        ListOrderUserComponent,
     ],
   imports: [
     BrowserModule,

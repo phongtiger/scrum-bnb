@@ -1,4 +1,7 @@
 <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="col-md-6 offset-md-3">
+  <div class="alert alert-info" role="alert" *ngIf="message">
+    {{message}}
+  </div>
   <div class="form-group row">
     <label class="col">
       Check In
