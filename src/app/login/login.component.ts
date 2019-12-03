@@ -58,12 +58,6 @@ export class LoginComponent implements OnInit {
               case 2:
                 this.router.navigate(['host']);
                 break;
-              case 3:
-                this.router.navigate(['admin']);
-                break;
-              default:
-                this.router.navigate(['user']);
-                break;
             }
             console.log('lay duoc profile');
           }, error => console.log('lay duoc profile') ) ;
