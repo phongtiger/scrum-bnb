@@ -50,12 +50,12 @@ export class LoginComponent implements OnInit {
             this.tokenStorage.saveAuthorities(next2.role[0].name);
             this.tokenStorage.saveEmail(next2.email);
             console.log(next2.role[0]);
-            switch (next2.role[0].id) {
-              case 1:
+            switch (next2.role[0].name) {
+              case 'ROLE_USER':
                 console.log('da vao day');
                 this.router.navigate(['user']);
                 break;
-              case 2:
+              case 'ROLE_HOST':
                 this.router.navigate(['host']);
                 break;
             }
